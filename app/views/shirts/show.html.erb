@@ -48,8 +48,8 @@
 
 
       <div class="btn-group btn-group-justified">
-        <a href="/shirts" class="btn btn-primary">Back</a>
-<% if current_customer=="jrobert@chicagobooth.edu" %>
+
+<% if current_customer.email == "jrobert5@chicagobooth.edu" %>
         <a href="/shirts/<%= @shirt.id %>/edit" class="btn btn-warning">Edit</a>
         <a href="/delete_shirt/<%= @shirt.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
 <% end %>
