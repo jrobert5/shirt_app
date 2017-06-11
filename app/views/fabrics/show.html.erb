@@ -1,0 +1,79 @@
+<div class="page-header">
+  <h3>Fabric #<%= @fabric.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Fabric code</dt>
+      <dd><%= @fabric.fabric_code %></dd>
+
+      <dt>Fabric desciption</dt>
+      <dd><%= @fabric.fabric_desciption %></dd>
+
+
+      <dd><img src = "<%= @fabric.fabric_image_url %>" style="width:200px;height:200px;"></dd>
+
+      <dt>Colors</dt>
+
+
+      <% @fabric_colors.each do |fabric_color| %>
+
+      <dd>
+        <%= fabric_color.color.color_name %>
+      </dd>
+      <% end %>
+
+
+
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/fabrics" class="btn btn-primary">
+        Back
+      </a>
+
+      <% if current_customer == "jrobert5@chicagobooth.edu" %>
+      <a href="/fabrics/<%= @fabric.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_fabric/<%= @fabric.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Choose colors for shirt fabrics -->
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_fabric_color" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for fabric_id -->
+      <div class="form-group">
+
+
+        <input type="hidden" id="fabric_id" name="fabric_id" placeholder="Fabric" class="form-control" value="<%= @fabric.id %>">
+      </div>
+
+      <!-- Label and input for color_id -->
+      <div class="form-group">
+        <label for="color_id" class="control-label">
+          Color
+        </label>
+        <%= select_tag("color_id", options_from_collection_for_select(Color.all, :id, :color_name), :class => "form-control") %>
+
+      </div>
+
+      <button class="btn btn-success">
+        Add Color
+      </button>
+
+    </form>
+  </div>
+</div>

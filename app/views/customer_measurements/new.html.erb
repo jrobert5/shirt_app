@@ -1,0 +1,199 @@
+<!-- Validation failure messages -->
+<% if @customer_measurement.errors.any? %>
+  <% @customer_measurement.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Customer Measurement</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_customer_measurement" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for customer_id -->
+      <div class="form-group">
+        <label for="customer_id" class="control-label">
+          Customer
+        </label>
+
+        <input type="hidden" id="customer_id" name="customer_id" placeholder="Customer" class="form-control" value="<%= current_customer.id %>">
+      </div>
+
+      <table class="table table-striped table-hover">
+        <tr>
+
+          <th>Neck</th>
+          <th>Chest</th>
+          <th>Stomach</th>
+          <th>Seat</th>
+          <th>Shirt length</th>
+          <th>Shoulder width</th>
+          <th>Right sleeve</th>
+          <th>Left sleeve</th>
+          <th>Right bicep</th>
+          <th>Left bicep</th>
+          <th>Right cuff</th>
+          <th>Left cuff</th>
+
+        </tr>
+        <tr>
+
+          <!-- Label and input for neck -->
+          <td>
+            <div class="form-group">
+              <!-- <label for="neck" class="control-label">
+              Neck
+            </label> -->
+
+            <input type="text" id="neck" name="neck" placeholder="Neck" class="form-control" >
+          </div>
+        </td>
+
+
+
+        <td>
+          <!-- Label and input for chest -->
+          <div class="form-group">
+            <!-- <label for="chest" class="control-label">
+            Chest
+          </label> -->
+
+          <input type="text" id="chest" name="chest" placeholder="Chest" class="form-control">
+        </div>
+      </td>
+
+
+
+      <td>
+        <!-- Label and input for stomach -->
+        <div class="form-group">
+          <!-- <label for="stomach" class="control-label">
+          Stomach
+        </label> -->
+
+        <input type="text" id="stomach" name="stomach" placeholder="Stomach" class="form-control">
+      </div>
+    </td>
+
+    <td>
+
+      <!-- Label and input for seat -->
+      <div class="form-group">
+        <!-- <label for="seat" class="control-label">
+        Seat
+      </label> -->
+
+      <input type="text" id="seat" name="seat" placeholder="Seat" class="form-control">
+    </div>
+  </td>
+
+  <td>
+    <!-- Label and input for shirt_length -->
+    <div class="form-group">
+      <!-- <label for="shirt_length" class="control-label">
+      Shirt length
+    </label> -->
+
+    <input type="text" id="shirt_length" name="shirt_length" placeholder="Shirt length" class="form-control">
+  </div>
+</td>
+
+
+
+<td>
+  <!-- Label and input for shoulder_width -->
+  <div class="form-group">
+    <!-- <label for="shoulder_width" class="control-label">
+    Shoulder width
+  </label> -->
+
+  <input type="text" id="shoulder_width" name="shoulder_width" placeholder="Shoulder width" class="form-control">
+</div>
+</td>
+
+
+
+<td>
+  <!-- Label and input for right_sleeve -->
+  <div class="form-group">
+    <!-- <label for="right_sleeve" class="control-label">
+    Right sleeve
+  </label> -->
+
+  <input type="text" id="right_sleeve" name="right_sleeve" placeholder="Right sleeve" class="form-control">
+</div>
+</td>
+<td>
+
+  <!-- Label and input for left_sleeve -->
+  <div class="form-group">
+    <!-- <label for="left_sleeve" class="control-label">
+    Left sleeve
+  </label> -->
+
+  <input type="text" id="left_sleeve" name="left_sleeve" placeholder="Left sleeve" class="form-control">
+</div>
+</td>
+<td>
+
+  <!-- Label and input for right_bicep -->
+  <div class="form-group">
+    <!-- <label for="right_bicep" class="control-label">
+    Right bicep
+  </label> -->
+
+  <input type="text" id="right_bicep" name="right_bicep" placeholder="Right bicep" class="form-control">
+</div>
+</td>
+<td>
+
+  <!-- Label and input for left_bicep -->
+  <div class="form-group">
+    <!-- <label for="left_bicep" class="control-label">
+    Left bicep
+  </label> -->
+
+  <input type="text" id="left_bicep" name="left_bicep" placeholder="Left bicep" class="form-control">
+</div>
+</td>
+<td>
+
+  <!-- Label and input for right_cuff -->
+  <div class="form-group">
+    <!-- <label for="right_cuff" class="control-label">
+    Right cuff
+  </label> -->
+
+  <input type="text" id="right_cuff" name="right_cuff" placeholder="Right cuff" class="form-control">
+</div>
+</td>
+
+<td>
+  <!-- Label and input for left_cuff -->
+  <div class="form-group">
+    <!-- <label for="left_cuff" class="control-label">
+    Left cuff
+  </label> -->
+
+  <input type="text" id="left_cuff" name="left_cuff" placeholder="Left cuff" class="form-control">
+</div>
+</td>
+</tr>
+</table>
+
+      <button class="btn btn-success">
+        Create Customer Measurement
+      </button>
+      or
+      <a href="/customer_measurements">Cancel</a>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<!-- Validation failure messages -->
+<% if @fabric_color.errors.any? %>
+  <% @fabric_color.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Fabric Color #<%= @fabric_color.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_fabric_color/<%= @fabric_color.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for fabric_id -->
+      <div class="form-group">
+        <label for="fabric_id" class="control-label">
+          Fabric
+        </label>
+
+        <input type="text" id="fabric_id" name="fabric_id" placeholder="Fabric" class="form-control" value="<%= @fabric_color.fabric_id %>">
+      </div>
+
+      <!-- Label and input for color_id -->
+      <div class="form-group">
+        <label for="color_id" class="control-label">
+          Color
+        </label>
+
+        <input type="text" id="color_id" name="color_id" placeholder="Color" class="form-control" value="<%= @fabric_color.color_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Fabric Color
+      </button>
+      or
+      <a href="/fabric_colors/<%= @fabric_color.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

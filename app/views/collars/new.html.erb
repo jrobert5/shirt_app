@@ -1,0 +1,46 @@
+<!-- Validation failure messages -->
+<% if @collar.errors.any? %>
+  <% @collar.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Collar</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_collar" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for collar_name -->
+      <div class="form-group">
+        <label for="collar_name" class="control-label">
+          Collar name
+        </label>
+
+        <input type="text" id="collar_name" name="collar_name" placeholder="Collar name" class="form-control" value="<%= @collar.collar_name %>">
+      </div>
+
+      <!-- Label and input for collar_image_url -->
+      <div class="form-group">
+        <label for="collar_image_url" class="control-label">
+          Collar image url
+        </label>
+
+        <input type="text" id="collar_image_url" name="collar_image_url" placeholder="Collar image url" class="form-control" value="<%= @collar.collar_image_url %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Collar
+      </button>
+      or
+      <a href="/collars">Cancel</a>
+    </form>
+  </div>
+</div>

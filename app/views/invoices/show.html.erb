@@ -1,0 +1,119 @@
+<div class="page-header">
+  <h3>Invoice #<%= @invoice.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+
+      <div class="btn-group btn-group-justified">
+        <a href="/invoices" class="btn btn-primary">
+          Back
+        </a>
+
+        <% if current_customer.email == "jrobert5@chicagobooth.edu" %>
+        <a href="/invoices/<%= @invoice.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_invoice/<%= @invoice.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
+
+        <% end %>
+
+
+      </div>
+    </br>
+  </br>
+  <dt>Customer</dt>
+  <dd><%= @invoice.customer.email %></dd>
+
+  <dt>Status</dt>
+  <dd><%= @invoice.status %></dd>
+
+  <dt>Shirts</dt>
+
+
+  <% @shirts.each do |shirt| %>
+
+  <dd>
+    <a href="/shirts/<%= shirt.fabric_id %>">
+      <img src ="<%= shirt.fabric.fabric_image_url %>" style="width:50px;height:50px;">
+      <img src ="<%= shirt.collar.collar_image_url %>" style="width:50px;height:50px;">
+      <img src ="<%= shirt.cuff.cuff_image_url %>" style="width:50px;height:50px;">
+    </a>
+  </dd>
+  <% end %>
+
+</dl>
+
+
+
+</div>
+</div>
+
+
+
+<% if current_customer.email == "jrobert5@chicagobooth.edu" %>
+
+
+
+<h3>Add Shirt</h3>
+
+<form action="/create_shirt" method="post">
+  <!-- Hidden input for authenticity token to protect from forgery -->
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+  <!-- Label and input for invoice_id -->
+  <div class="form-group">
+
+
+    <input type="hidden" id="invoice_id" name="invoice_id"  value="<%= @invoice.id %>">
+  </div>
+
+  <!-- Label and input for fabric_id -->
+  <div class="form-group">
+    <label for="fabric_id" class="control-label">
+      Fabric
+    </label>
+    <br>
+
+    <% @fabrics.each do |fabric| %>
+    <input type="radio" name="fabric_id" value="<%= fabric.id %>">
+    <img src ="<%= fabric.fabric_image_url %>" style="width:100px;height:100px;">
+    <% end %>
+
+  </div>
+  <!-- Label and input for collar_id -->
+  <div class="form-group">
+    <label for="collar_id" class="control-label">
+      Collar
+    </label>
+    <br>
+    <% @collars.each do |collar| %>
+    <input type="radio" name="collar_id" value="<%= collar.id %>">
+    <img src ="<%= collar.collar_image_url %>" style="width:100px;height:100px;">
+    <% end %>
+  </div>
+
+  <!-- Label and input for cuff_id -->
+  <div class="form-group">
+    <label for="cuff_id" class="control-label">
+      Cuff
+    </label>
+    <br>
+    <% @cuffs.each do |cuff| %>
+    <input type="radio" name="cuff_id" value="<%= cuff.id %>">
+    <img src ="<%= cuff.cuff_image_url %>" style="width:100px;height:100px;">
+    <% end %>
+
+  </div>
+
+  <button class="btn btn-success">
+    Create Shirt
+  </button>
+  or
+  <a href="/shirts">Cancel</a>
+</form>
+
+<% end %>

@@ -1,0 +1,61 @@
+<div class="page-header">
+  <h3>Customer Measurement #<%= @customer_measurement.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Customer</dt>
+      <dd><%= @customer_measurement.customer_id %></dd>
+
+      <dt>Neck</dt>
+      <dd><%= @customer_measurement.neck %></dd>
+
+      <dt>Chest</dt>
+      <dd><%= @customer_measurement.chest %></dd>
+
+      <dt>Stomach</dt>
+      <dd><%= @customer_measurement.stomach %></dd>
+
+      <dt>Seat</dt>
+      <dd><%= @customer_measurement.seat %></dd>
+
+      <dt>Shirt length</dt>
+      <dd><%= @customer_measurement.shirt_length %></dd>
+
+      <dt>Shoulder width</dt>
+      <dd><%= @customer_measurement.shoulder_width %></dd>
+
+      <dt>Right sleeve</dt>
+      <dd><%= @customer_measurement.right_sleeve %></dd>
+
+      <dt>Left sleeve</dt>
+      <dd><%= @customer_measurement.left_sleeve %></dd>
+
+      <dt>Right bicep</dt>
+      <dd><%= @customer_measurement.right_bicep %></dd>
+
+      <dt>Left bicep</dt>
+      <dd><%= @customer_measurement.left_bicep %></dd>
+
+      <dt>Right cuff</dt>
+      <dd><%= @customer_measurement.right_cuff %></dd>
+
+      <dt>Left cuff</dt>
+      <dd><%= @customer_measurement.left_cuff %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/customer_measurements" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/customer_measurements/<%= @customer_measurement.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_customer_measurement/<%= @customer_measurement.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

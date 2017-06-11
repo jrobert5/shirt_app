@@ -1,0 +1,46 @@
+<!-- Validation failure messages -->
+<% if @cuff.errors.any? %>
+  <% @cuff.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Cuff</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_cuff" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for cuff_name -->
+      <div class="form-group">
+        <label for="cuff_name" class="control-label">
+          Cuff name
+        </label>
+
+        <input type="text" id="cuff_name" name="cuff_name" placeholder="Cuff name" class="form-control" value="<%= @cuff.cuff_name %>">
+      </div>
+
+      <!-- Label and input for cuff_image_url -->
+      <div class="form-group">
+        <label for="cuff_image_url" class="control-label">
+          Cuff image url
+        </label>
+
+        <input type="text" id="cuff_image_url" name="cuff_image_url" placeholder="Cuff image url" class="form-control" value="<%= @cuff.cuff_image_url %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Cuff
+      </button>
+      or
+      <a href="/cuffs">Cancel</a>
+    </form>
+  </div>
+</div>

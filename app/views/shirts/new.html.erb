@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @shirt.errors.any? %>
+  <% @shirt.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Shirt</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_shirt" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for invoice_id -->
+      <div class="form-group">
+        <label for="invoice_id" class="control-label">
+          Invoice
+        </label>
+
+        <input type="text" id="invoice_id" name="invoice_id" placeholder="Invoice" class="form-control" value="<%= @shirt.invoice_id %>">
+      </div>
+
+      <!-- Label and input for fabric_id -->
+      <div class="form-group">
+        <label for="fabric_id" class="control-label">
+          Fabric
+        </label>
+
+        <input type="text" id="fabric_id" name="fabric_id" placeholder="Fabric" class="form-control" value="<%= @shirt.fabric_id %>">
+      </div>
+
+      <!-- Label and input for collar_id -->
+      <div class="form-group">
+        <label for="collar_id" class="control-label">
+          Collar
+        </label>
+
+        <input type="text" id="collar_id" name="collar_id" placeholder="Collar" class="form-control" value="<%= @shirt.collar_id %>">
+      </div>
+
+      <!-- Label and input for cuff_id -->
+      <div class="form-group">
+        <label for="cuff_id" class="control-label">
+          Cuff
+        </label>
+
+        <input type="text" id="cuff_id" name="cuff_id" placeholder="Cuff" class="form-control" value="<%= @shirt.cuff_id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Shirt
+      </button>
+      or
+      <a href="/shirts">Cancel</a>
+    </form>
+  </div>
+</div>

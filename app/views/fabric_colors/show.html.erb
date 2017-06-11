@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h3>Fabric Color #<%= @fabric_color.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Fabric</dt>
+      <dd><%= @fabric_color.fabric_id %></dd>
+
+      <dt>Color</dt>
+      <dd><%= @fabric_color.color_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/fabric_colors" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/fabric_colors/<%= @fabric_color.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_fabric_color/<%= @fabric_color.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
